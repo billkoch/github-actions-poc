@@ -3,7 +3,6 @@ on: [push, pull_request]
 jobs: 
   publish-snapshot:
     if: contains('refs/heads/main', github.ref)
-    needs: spotless
     runs-on: ubuntu-latest
     steps:
       - name: Publish Snapshot
