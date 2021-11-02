@@ -1,0 +1,17 @@
+name: "CI/CD Jobs"
+on: [push, pull_request]
+jobs: 
+  publish-snapshot:
+    if: contains('refs/heads/main', github.ref)
+    needs: spotless
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish Snapshot
+        run: echo "I'm the main branch"
+
+  publish-release:
+    if: contains('refs/heads/tags', github.ref)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish Release
+        run: echo "I'm a tag!"
